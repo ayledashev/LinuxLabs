@@ -107,6 +107,7 @@
 6. Установка grub на новый диск
 
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_7.png)
+
 7. Перезагрузка ВМ и проверка, что все работает
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_8.png)
 ## Вывод
