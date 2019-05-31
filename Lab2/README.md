@@ -137,6 +137,7 @@
 * Перемонтировака /boot на живой диск
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part3/Screenshot_5.png)
 * Установка grub на новый диск
+
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part3/Screenshot_6.png)
 
 Grub устанавливаем, чтобы могли загрузить ОС с этого диска
@@ -222,6 +223,7 @@ vgs
 * Вывод команды pvs
 * Расширение размера PV
 * Вывод команды pvs
+
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part3/Screenshot_29.png)
 14. Добавление вновь появившееся место VG var,root
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part3/Screenshot_30.png)
