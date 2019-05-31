@@ -11,17 +11,16 @@
 * SATA контроллер настроен на 4 порта
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_1.png)
 2. Начало установки Linux:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_2.png)
 * Настройка отдельного раздела под /boot: Выбрав первый диск, создал на нем новую таблицу разделов
     + Partition size: 512M
     + Mount point: /boot
     + Повторил настройки для второго диска, выбрав mount point:none
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_3.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_2.png)
 * Настройка RAID
     + Выбрал свободное место на первом диске и настроил в качестве типа раздела physical volume for RAID
     + Выбрал "Done setting up the partition"
     + Повторил настройку для второго диска
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_4.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_3.png)
 * Выбрал пункт "Configure software RAID"
     + Create MD device
     + Software RAID device type: Выберал зеркальный массив
@@ -30,7 +29,7 @@
     + Active devices for the RAID XX array: Выбрал разделы, которые создавал под raid
     + Finish
 * В итоге получил: 
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_5.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_4.png)
 * Настройка LVM: Выбрал Configure the Logical Volume Manager
     + Keep current partition layout and configure LVM: Yes
     + Create volume group
@@ -46,31 +45,32 @@
     + logical volume name: log
     + logical volume size: 1\5 от размера диска
      + Выбрав Display configuration details получил следующую картину: 
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_6.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_5.png)
     + Завершив настройку LVM увидел следующее:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_7.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_6.png)
 * Разметка разделов: по-очереди выбрал каждый созданный в LVM том и разметил их, например, для root так:
     + Use as: ext4
     + mount point: /
     + повторил операцию разметки для var и log выбрав соответствующие точки монтирования (/var и /var/log), получив следующий результат:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_8.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_7.png)
 * Финальный результат получился вот таким:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_9.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_8.png)
 3. Закончил установку ОС, поставив grub на первое устройство (sda) и загрузил систему.
 4. Выполнил копирование содержимого раздела /boot с диска sda (ssd1) на диск sdb (ssd2)
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_10.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_9.png)
 5. Выполнил установку grub на второе устройство:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_11.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_10.png)
 * Результат команды fdisk -l:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_12.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_11.png)
 * Результат команды lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT:
     + sda - ssd1
-    + sdb -ssd2
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_13.png)
+    + sdb - ssd2
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_12.png)
 * Посмотрел информацию о текущем raid командой cat /proc/mdstat:
-![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_14.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_13.png)
 Увидел, что активны два raid1 sda2[0] и sdb2[1]
 * Выводы команд: pvs, vgs, lvs, mount:
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_14.png)
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_15.png)
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_16.png)
 * С помощью этих команд увидел информацию об physical volumes, volume groups, logical volumes, примонтированных устройств.
