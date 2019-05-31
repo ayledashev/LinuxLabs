@@ -225,6 +225,7 @@ vgs
 * Вывод команды pvs
 
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part3/Screenshot_29.png)
+
 14. Добавление вновь появившееся место VG var,root
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part3/Screenshot_30.png)
 15. Перемещение /var/log на новые диски
