@@ -64,14 +64,18 @@
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_11.png)
 * Результат команды lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT:
     + sda - ssd1
-    + sdb - ssd2
+    + sdb -ssd2
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_12.png)
 * Посмотрел информацию о текущем raid командой cat /proc/mdstat:
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_13.png)
 Увидел, что активны два raid1 sda2[0] и sdb2[1]
+
 * Выводы команд: pvs, vgs, lvs, mount:
+
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_14.png)
+
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_15.png)
+
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_16.png)
 * С помощью этих команд увидел информацию об physical volumes, volume groups, logical volumes, примонтированных устройств.
 ## Вывод
@@ -84,28 +88,28 @@
  * dd if=/dev/xxx of=/dev/yyy
  * grub-install /dev/XXX 
 * В результате получил виртуальную машину с дисками ssd1, ssd2.
-# Задание 2 (Эмуляция отказа одного из дисков)
+
+## Задание 2 (Эмуляция отказа одного из дисков)
 1. Удаление диска ssd1 в свойствах машины, проверка работоспособности виртуальной машины.
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_����%20Raid%20v2.0_06_04_2019_09_25_35.png) 
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_1.png)
 2. Проверка статуса RAID-массива cat /proc/mdstat
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_����%20Raid%20v2.0_06_04_2019_09_26_27.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_2.png)
 3. Добавление в интерфейсе VM нового диска такого же размера с названием ssd3
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/Screenshot_4.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_3.png)
 4. Выполнение операций:
 * Просмотр нового диска, что он приехал в систему командой fdisk -l
 * Копирование таблиц разделов со старого диска на новый: sfdisk -d /dev/XXXX | sfdisk /dev/YYY
 * Результат
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_lab%202.2_07_04_2019_21_46_35.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_4.png)
 * Добавление в рейд массив нового диска: mdadm --manage /dev/md0 --add /dev/YYY
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_lab%202.2_07_04_2019_21_47_34.png)
 * Результат cat /proc/mdstat
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_lab%202.2_07_04_2019_21_48_13.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_5.png)
 5. Выполение синхронизации разделов, не входящих в RAID
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_lab%202.2_07_04_2019_21_49_01.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_6.png)
 6. Установка grub на новый диск
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_lab%202.2_07_04_2019_21_49_25.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_7.png)
 7. Перезагрузка ВМ и проверка, что все работает
-![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images2/VirtualBox_������%20�����%20����������_06_04_2019_11_18_44.png)
+![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_8.png)
 ## Вывод
 В этом задании научился:
 * Удалять диск ssd1
@@ -116,10 +120,11 @@
 
 Изучил новые команды:
 * sfdisk -d /dev/XXXX | sfdisk /dev/YYY
-* mdadm --manage /dev/md0 --add /dev/YYY
+* mdadm --manage /dev/md0 --add /dev/YSYY
 
 Результат: Удален диск ssd1, добавлен диск ssd3, ssd2 сохранили
-# Задание 3 (Добавление новых дисков и перенос раздела)
+
+## Задание 3 (Добавление новых дисков и перенос раздела)
 1. Эмулирование отказа диска ssd2 и просмотр состояние дисков RAID
 ![alt-текст](https://github.com/Kindface/Linux-labs/blob/master/lab2/images3/VirtualBox_Hard_06_04_2019_15_24_43.png)
 2. Добавление нового ssd диска
