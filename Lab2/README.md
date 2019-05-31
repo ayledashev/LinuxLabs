@@ -73,9 +73,7 @@
 * Выводы команд: pvs, vgs, lvs, mount:
 
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_14.png)
-
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_15.png)
-
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part1/Screenshot_16.png)
 * С помощью этих команд увидел информацию об physical volumes, volume groups, logical volumes, примонтированных устройств.
 ## Вывод
@@ -107,6 +105,7 @@
 5. Выполение синхронизации разделов, не входящих в RAID
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_6.png)
 6. Установка grub на новый диск
+
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_7.png)
 7. Перезагрузка ВМ и проверка, что все работает
 ![alt-текст](https://github.com/lasfire/LinuxLabs/blob/master/Lab2/part2/Screenshot_8.png)
